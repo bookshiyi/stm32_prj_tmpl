@@ -7,16 +7,28 @@
 
 ## 开发环境
 
-| 功能       | 工具                 | 功能                                                                   | Windows                                    | macOS                         | Linux                        |
-| ---------- | -------------------- | ---------------------------------------------------------------------- | ------------------------------------------ | ----------------------------- | ---------------------------- |
-| 任务运行器 | Just                 | 跨平台提供统一任务入口                                                 | winget install Casey.Just                  | brew install just             | apt install just             |
-| 构建生成器 | CMake                | 根据 CMakeLists.txt 对项目的构建方法进行编排                           | winget install Kitware.CMake               | brew install cmake            | apt install cmake            |
-| 构建执行器 | Ninja                | 根据构建生成器生成的构建系统描述文件，执行构建任务                     | winget install ninja-build.ninja           | brew install ninja            | apt install ninja-build      |
-| 编译器     | GCC                  | 接收执行器的调配，将源文件编译为目标文件，并将目标文件链接成可执行文件 | winget install Arm.GNUArmEmbeddedToolchain | brew install gcc-arm-embedded | apt install gcc-arm-embedded |
-| 调试服务器 | pyocd                |                                                                        | pipx install pyocd                         | pipx install pyocd            | pipx install pyocd           |
-| 支持包     | For pyocd            |                                                                        | pyocd pack install stm32f407               | pyocd pack install stm32f407  | pyocd pack install stm32f407 |
-| 调试服务器 | openocd              |                                                                        | -                                          | brew install openocd          | apt install openocd          |
-| DAP        | cortex-debug(vscode) | 连接 GUI 与调试服务器                                                  | -                                          | -                             | -                            |
+| 功能       | 工具                 | 功能                                                                   |
+| ---------- | -------------------- | ---------------------------------------------------------------------- |
+| 任务运行器 | Just                 | 跨平台提供统一任务入口                                                 |
+| 构建生成器 | CMake                | 根据 CMakeLists.txt 对项目的构建方法进行编排                           |
+| 构建执行器 | Ninja                | 根据构建生成器生成的构建系统描述文件，执行构建任务                     |
+| 编译器     | GCC                  | 接收执行器的调配，将源文件编译为目标文件，并将目标文件链接成可执行文件 |
+| 调试服务器 | pyocd                |                                                                        |
+| 支持包     | For pyocd            |                                                                        |
+| 调试服务器 | openocd              |                                                                        |
+| DAP        | cortex-debug(vscode) | 连接 GUI 与调试服务器                                                  |
+```sh
+# Windows
+winget install Casey.Just Kitware.CMake Ninja-build.Ninja Arm.GnuArmEmbeddedToolchain Microsoft.VisualStudioCode Git.Git
+# macOS
+brew install just cmake ninja gcc-arm-embedded open-ocd visual-studio-code git
+# Linux
+apt install just cmake ninja-build gcc-arm-none-eabi openocd git
+```
+```sh
+pipx install pyocd
+pyocd pack install stm32f407
+```
 
 ## 任务
 
