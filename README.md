@@ -1,22 +1,16 @@
 # stm32_prj_tmpl
 
+> 一个为 stm32cubemx 生成的项目提供的开发模版
+
+## 特点
+
+- 支持全平台：Windows、Linux、macOS
+- 支持多种开发环境：Visual Studio Code、Zed
+
 ## 开始使用
 
-使用`STM32CubeMX`配置工程为 CMake 模式后生成目标项目
-将本项目中的所有文件拷贝到目标项目文件夹中即可
+1. 安装依赖
 
-## 开发环境
-
-| 功能       | 工具                 | 功能                                                                   |
-| ---------- | -------------------- | ---------------------------------------------------------------------- |
-| 任务运行器 | Just                 | 跨平台提供统一任务入口                                                 |
-| 构建生成器 | CMake                | 根据 CMakeLists.txt 对项目的构建方法进行编排                           |
-| 构建执行器 | Ninja                | 根据构建生成器生成的构建系统描述文件，执行构建任务                     |
-| 编译器     | GCC                  | 接收执行器的调配，将源文件编译为目标文件，并将目标文件链接成可执行文件 |
-| 调试服务器 | pyocd                |                                                                        |
-| 支持包     | For pyocd            |                                                                        |
-| 调试服务器 | openocd              |                                                                        |
-| DAP        | cortex-debug(vscode) | 连接 GUI 与调试服务器                                                  |
 ```sh
 # Windows
 winget install Casey.Just Kitware.CMake Ninja-build.Ninja Arm.GnuArmEmbeddedToolchain Microsoft.VisualStudioCode Git.Git
@@ -25,10 +19,16 @@ brew install just cmake ninja gcc-arm-embedded open-ocd visual-studio-code git
 # Linux
 apt install just cmake ninja-build gcc-arm-none-eabi openocd git
 ```
+
 ```sh
 pipx install pyocd
 pyocd pack install stm32f407
 ```
+
+2. 使用`STM32CubeMX`配置工程为 CMake 模式后生成目标项目
+3. 将本项目中的所有文件拷贝到目标项目文件夹中
+4. 使用`Visual Studio Code`或`Zed`打开项目文件夹
+5. 通过 GUI 或者 CLI 进行开发、调试
 
 ## 任务
 
@@ -45,6 +45,17 @@ pyocd pack install stm32f407
 | ------ | --------------------------- | ------------------- |
 | vscode | Command + Shift + B (Build) | actboy168.tasks     |
 | zed    | Command + Shift + R (Run)   | native(coming soon) |
+
+## 开发环境
+
+| 功能       | 工具                 | 功能                                                                   |
+| ---------- | -------------------- | ---------------------------------------------------------------------- |
+| 任务运行器 | Just                 | 跨平台提供统一任务入口                                                 |
+| 构建生成器 | CMake                | 根据 CMakeLists.txt 对项目的构建方法进行编排                           |
+| 构建执行器 | Ninja                | 根据构建生成器生成的构建系统描述文件，执行构建任务                     |
+| 编译器     | GCC                  | 接收执行器的调配，将源文件编译为目标文件，并将目标文件链接成可执行文件 |
+| 调试服务器 | pyocd/openocd        | 连接终端或 DAP 与 Debugger 的桥梁                                      |
+| DAP        | cortex-debug(vscode) | 连接 GUI 与调试服务器的桥梁                                            |
 
 ## 文件列表
 
@@ -92,7 +103,7 @@ sequenceDiagram
     participant Debugger as Debugger<br/>ST-Link | CMSIS-DAP
     end
 
-    box rgba(48, 96, 48, 0.2) Target
+    box rgba(20, 20, 100, 0.2) Target
     participant MCU as MCU<br/>STM32
     end
 
