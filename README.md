@@ -32,17 +32,17 @@
 
 ## 文件列表
 ```
-├── .gitattributes # git
+├── .gitattributes # git文件属性控制
 ├── .gitignore # git系统忽略的文件
 ├── .justfile # 任务入口（配置、构建、清理、烧录）
 ├── .vscode # vscode配置
-│   ├── c_cpp_properties.json #
+│   ├── c_cpp_properties.json # LSP配置(读取compile_commands.json)
 │   ├── extensions.json # 扩展插件
-│   ├── launch.json # 调试器配置
-│   ├── settings.json # LSP配置(读取compile_commands.json)
+│   ├── launch.json # 调试会话配置
+│   ├── settings.json # 项目配置
 │   └── tasks.json # vscode任务（调用justfile）
 ├── .zed # zed 配置
-│   ├── debug.json # 调试器配置
+│   ├── debug.json # 调试会话配置
 │   ├── settings.json # LSP配置（clangd,读取compile_commands.json）
 │   └── tasks.json # zed任务（调用justfile）
 ├── openocd.cfg # openocd配置文件（仅调试时时候）
