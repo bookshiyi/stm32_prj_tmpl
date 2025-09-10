@@ -1,19 +1,21 @@
 # stm32_prj_tmpl
 
+## 开始使用
+
+使用`STM32CubeMX`配置工程为CMake模式后生成目标项目
+将本项目中的所有文件拷贝到目标项目文件夹中即可
+
 ## 开发环境
-| 功能 | 工具 | Windows  | macOS | Linux |
- | --- | --- | --- | --- | --- |
-| 任务运行器 | Just | winget install Casey.Just | brew install just | apt install just |
-| 构建生成器 | CMake | winget install Kitware.CMake | brew install cmake | apt install cmake |
-| 构建执行器 | Ninja | winget install ninja-build.ninja | brew install ninja | apt install ninja-build |
-| 编译器 | GCC | winget install Arm.GNUArmEmbeddedToolchain | brew install gcc-arm-embedded | apt install gcc-arm-embedded |
-| 调试器 | pyocd | pipx install pyocd   | pipx install pyocd | pipx install pyocd |
-| 支持包 | For pyocd | pyocd pack install stm32f407 | pyocd pack install stm32f407  | pyocd pack install stm32f407 |
-| 调试服务器器 | openocd | - | brew install openocd | apt install openocd |
-| DAP(连接GUI与调试服务器) | cortex-debug(vscode) | - | - | - |
-
-
-
+| 功能 | 工具 | 功能 | Windows  | macOS | Linux |
+ | --- | --- | --- | --- | --- | --- |
+| 任务运行器 | Just | 跨平台提供统一任务入口 | winget install Casey.Just | brew install just | apt install just |
+| 构建生成器 | CMake | 根据CMakeLists.txt对项目的构建方法进行编排 | winget install Kitware.CMake | brew install cmake | apt install cmake |
+| 构建执行器 | Ninja | 根据构建生成器生成的构建系统描述文件，执行构建任务 | winget install ninja-build.ninja | brew install ninja | apt install ninja-build |
+| 编译器 | GCC | 接收执行器的调配，将源文件编译为目标文件，并将目标文件链接成可执行文件 |winget install Arm.GNUArmEmbeddedToolchain | brew install gcc-arm-embedded | apt install gcc-arm-embedded |
+| 调试服务器 | pyocd |  |pipx install pyocd   | pipx install pyocd | pipx install pyocd |
+| 支持包 | For pyocd | |pyocd pack install stm32f407 | pyocd pack install stm32f407  | pyocd pack install stm32f407 |
+| 调试服务器 | openocd | | - | brew install openocd | apt install openocd |
+| DAP |  cortex-debug(vscode) |  连接GUI与调试服务器 | - | - | - |
 
 ## 任务
 | 任务 | 入口  | 功能 | 输出/操作 |
