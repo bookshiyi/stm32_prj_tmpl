@@ -5,11 +5,13 @@
       "label": "Setup",
       "type": "process",
       "command": "just",
-      "args": ["setup"],
+      "args": [
+        "setup"
+      ],
       "options": {
         "cwd": "${workspaceRoot}",
         "statusbar": {
-          "label": "📁Setup"
+          "label": "🛠️Setup"
         }
       },
       "group": "build"
@@ -18,7 +20,9 @@
       "label": "Build",
       "type": "process",
       "command": "just",
-      "args": ["build"],
+      "args": [
+        "build"
+      ],
       "options": {
         "cwd": "${workspaceRoot}",
         "statusbar": {
@@ -26,13 +30,17 @@
         }
       },
       "group": "build",
-      "problemMatcher": ["$gcc"]
+      "problemMatcher": [
+        "$gcc"
+      ]
     },
     {
       "label": "Flash",
       "type": "process",
       "command": "just",
-      "args": ["flash"],
+      "args": [
+        "flash"
+      ],
       "options": {
         "cwd": "${workspaceRoot}",
         "statusbar": {
@@ -48,7 +56,9 @@
       "label": "Clean",
       "type": "process",
       "command": "just",
-      "args": ["clean"],
+      "args": [
+        "clean"
+      ],
       "options": {
         "cwd": "${workspaceRoot}",
         "statusbar": {
@@ -61,7 +71,9 @@
       "label": "Rebuild",
       "type": "process",
       "command": "just",
-      "args": ["rebuild"],
+      "args": [
+        "rebuild"
+      ],
       "options": {
         "cwd": "${workspaceRoot}",
         "statusbar": {

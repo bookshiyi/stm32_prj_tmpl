@@ -19,16 +19,16 @@ OPENOCD_TARGET := "target/stm32f4x.cfg" # >ls /opt/homebrew/share/openocd/script
 
 ##############################################
 
-# 📁 Setup
+# 🛠️ Setup
 setup:
-    @echo 📁  Setting up...
+    @echo 🛠️  Setting up...
     @cmake --preset {{ MODE }}
     @echo ✅  Setup done
 
 # 📦 Build
 build:
     @just setup
-    @echo 🛠️  Building..
+    @echo 📦  Building..
     @cmake --build --preset {{ MODE }}
     @echo ✅  Built done
 
@@ -64,6 +64,6 @@ _flash-openocd:
 # ⚡️ Flash
 flash:
     @just build
-    @echo 🔥  Flashing...
+    @echo ⚡️  Flashing...
     @just _flash-{{ PROGRAMMER }}
     @echo ✅  Flash done

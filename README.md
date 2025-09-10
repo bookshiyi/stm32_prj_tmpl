@@ -2,37 +2,40 @@
 
 ## 开始使用
 
-使用`STM32CubeMX`配置工程为CMake模式后生成目标项目
+使用`STM32CubeMX`配置工程为 CMake 模式后生成目标项目
 将本项目中的所有文件拷贝到目标项目文件夹中即可
 
 ## 开发环境
-| 功能 | 工具 | 功能 | Windows  | macOS | Linux |
- | --- | --- | --- | --- | --- | --- |
-| 任务运行器 | Just | 跨平台提供统一任务入口 | winget install Casey.Just | brew install just | apt install just |
-| 构建生成器 | CMake | 根据CMakeLists.txt对项目的构建方法进行编排 | winget install Kitware.CMake | brew install cmake | apt install cmake |
-| 构建执行器 | Ninja | 根据构建生成器生成的构建系统描述文件，执行构建任务 | winget install ninja-build.ninja | brew install ninja | apt install ninja-build |
-| 编译器 | GCC | 接收执行器的调配，将源文件编译为目标文件，并将目标文件链接成可执行文件 |winget install Arm.GNUArmEmbeddedToolchain | brew install gcc-arm-embedded | apt install gcc-arm-embedded |
-| 调试服务器 | pyocd |  |pipx install pyocd   | pipx install pyocd | pipx install pyocd |
-| 支持包 | For pyocd | |pyocd pack install stm32f407 | pyocd pack install stm32f407  | pyocd pack install stm32f407 |
-| 调试服务器 | openocd | | - | brew install openocd | apt install openocd |
-| DAP |  cortex-debug(vscode) |  连接GUI与调试服务器 | - | - | - |
+
+| 功能       | 工具                 | 功能                                                                   | Windows                                    | macOS                         | Linux                        |
+| ---------- | -------------------- | ---------------------------------------------------------------------- | ------------------------------------------ | ----------------------------- | ---------------------------- |
+| 任务运行器 | Just                 | 跨平台提供统一任务入口                                                 | winget install Casey.Just                  | brew install just             | apt install just             |
+| 构建生成器 | CMake                | 根据 CMakeLists.txt 对项目的构建方法进行编排                           | winget install Kitware.CMake               | brew install cmake            | apt install cmake            |
+| 构建执行器 | Ninja                | 根据构建生成器生成的构建系统描述文件，执行构建任务                     | winget install ninja-build.ninja           | brew install ninja            | apt install ninja-build      |
+| 编译器     | GCC                  | 接收执行器的调配，将源文件编译为目标文件，并将目标文件链接成可执行文件 | winget install Arm.GNUArmEmbeddedToolchain | brew install gcc-arm-embedded | apt install gcc-arm-embedded |
+| 调试服务器 | pyocd                |                                                                        | pipx install pyocd                         | pipx install pyocd            | pipx install pyocd           |
+| 支持包     | For pyocd            |                                                                        | pyocd pack install stm32f407               | pyocd pack install stm32f407  | pyocd pack install stm32f407 |
+| 调试服务器 | openocd              |                                                                        | -                                          | brew install openocd          | apt install openocd          |
+| DAP        | cortex-debug(vscode) | 连接 GUI 与调试服务器                                                  | -                                          | -                             | -                            |
 
 ## 任务
-| 任务 | 入口  | 功能 | 输出/操作 |
-| --- | ---- | ---- | ---- |
-| 📁配置 | just setup/s | 解析 CMakeLists.txt，检测系统环境，生成构建系统描述文件 | CMakeCache.txt,CMakeFiles/,构建系统描述文件（如 Makefile模板) |
-| 📦构建 | just build/b | 调用底层构建工具（如 Make/Ninja/MSBuild）​编译源代码并链接​ |.o/.obj（对象文件）.a/.lib（静态库）.elf/.hex（目标可执行文件） |
-| 🧹清理 | just clean/c | 删除构建产物​（对象文件、可执行文件等） | 清理build/目录下所有产物 |
-| ⚡️烧录 | just flash/f | 将可执行文件烧录到目标设备 | 通过openocd/pyocd将.elf/.hex/.bin烧录到目标设备 |
-| 🐞调试 | GUI | 启动调试会话​（需配合 IDE 和调试器） | 烧录后启动调试会话 |
-| 🔗链接 | GUI | 连接到调试会话​（需配合 IDE 和调试器） | 无需下载 |
 
-| IDE | 任务快捷键 | GUI |
-| --- | ---- | ---- |
-| vscode | Command + Shift + B (Build)| actboy168.tasks |
-| zed | Command + Shift + R (Run) | native(coming soon)|
+| 任务     | 入口         | 功能                                                          | 输出/操作                                                       |
+| -------- | ------------ | ------------------------------------------------------------- | --------------------------------------------------------------- |
+| 🛠️ 配置  | just setup/s | 解析 CMakeLists.txt，检测系统环境，生成构建系统描述文件       | CMakeCache.txt,CMakeFiles/,构建系统描述文件（如 Makefile 模板)  |
+| 📦 构建  | just build/b | 调用底层构建工具（如 Make/Ninja/MSBuild）​ 编译源代码并链接 ​ | .o/.obj（对象文件）.a/.lib（静态库）.elf/.hex（目标可执行文件） |
+| 🧹 清理  | just clean/c | 删除构建产物 ​（对象文件、可执行文件等）                      | 清理 build/目录下所有产物                                       |
+| ⚡️ 烧录 | just flash/f | 将可执行文件烧录到目标设备                                    | 通过 openocd/pyocd 将.elf/.hex/.bin 烧录到目标设备              |
+| 🐞 调试  | GUI          | 启动调试会话 ​（需配合 IDE 和调试器）                         | 烧录后启动调试会话                                              |
+| 🔗 链接  | GUI          | 连接到调试会话 ​（需配合 IDE 和调试器）                       | 无需下载                                                        |
+
+| IDE    | 任务快捷键                  | GUI                 |
+| ------ | --------------------------- | ------------------- |
+| vscode | Command + Shift + B (Build) | actboy168.tasks     |
+| zed    | Command + Shift + R (Run)   | native(coming soon) |
 
 ## 文件列表
+
 ```
 ├── .gitattributes # git文件属性控制
 ├── .gitignore # git系统忽略的文件
@@ -49,4 +52,76 @@
 │   └── tasks.json # zed任务（调用justfile）
 ├── openocd.cfg # openocd配置文件（仅调试时时候）
 └── README.md
+```
+
+## 工作流
+
+```mermaid
+sequenceDiagram
+    box rgba(129, 122, 101, 0.2) Development
+    participant IDE as IDE<br/>VSCode | Zed
+    participant CLI as CLI<br/>Shell
+    end
+
+    box rgba(248, 198, 66, 0.2) Task Runner
+    participant Runner as Runner<br/>justfile
+    end
+
+    box rgba(108, 161, 120, 0.2) Build System
+    participant Generator as Generator<br/>CMake
+    participant Builder as Builder<br/>Ninja | Make
+    participant Compiler as Compiler<br/>GCC | starm-clang
+    participant Linker as Linker<br/>LD
+    end
+
+    box rgba(48, 96, 48, 0.2) Debug system
+    participant DAP as DAP<br/>cortex-debug
+    participant DebugServer as DebugServer<br/>OpenOCD | pyOCD
+    participant Debugger as Debugger<br/>ST-Link | CMSIS-DAP
+    end
+
+    box rgba(48, 96, 48, 0.2) Target
+    participant MCU as MCU<br/>STM32
+    end
+
+    %% Just Setup 阶段
+    Note over IDE, Generator: 🛠️ Setup
+    IDE ->> CLI: 🛠️ Setup
+    CLI ->> Runner: just setup
+    Runner ->> Generator: cmake --preset
+    Generator -->> Runner: CMakeCache
+
+    %% Just Build 阶段
+    Note over IDE, Linker: 📦 Build
+    IDE ->> CLI: 📦 Build
+    CLI ->> Runner: just build
+    Runner ->> Runner: just setup
+    Runner ->> Builder: cmake --build --preset
+    Builder ->> Compiler: compile
+    Compiler -->> Builder: .o/.obj
+    Builder ->> Linker: link
+    Linker -->> Builder: .elf/.hex/.bin
+
+    %% Just Flash 阶段
+    Note over IDE, MCU: ⚡️ Flash
+    IDE ->> CLI: ⚡️ Flash
+    CLI ->> Runner: just flash
+    Runner ->> Runner: just build
+    Runner ->> DebugServer: flash
+    DebugServer ->> Debugger: flash
+    Debugger ->> MCU:
+
+    %% Debug 阶段
+    Note over IDE, MCU: 🔗 Attach
+    IDE ->> CLI: 🔗 Attach
+    CLI ->> DAP:
+    DAP ->> DebugServer:
+    DebugServer ->> Debugger:
+    Debugger ->> MCU:
+
+    %% Debug 阶段
+    Note over IDE, MCU: 🐞 Debug
+    IDE ->> CLI: 🐞 Debug
+    Runner ->> Runner: just flash
+    CLI ->> CLI: attach
 ```
