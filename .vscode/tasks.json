@@ -1,0 +1,77 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup",
+      "type": "process",
+      "command": "just",
+      "args": ["setup"],
+      "options": {
+        "cwd": "${workspaceRoot}",
+        "statusbar": {
+          "label": "📁Setup"
+        }
+      },
+      "group": "build"
+    },
+    {
+      "label": "Build",
+      "type": "process",
+      "command": "just",
+      "args": ["build"],
+      "options": {
+        "cwd": "${workspaceRoot}",
+        "statusbar": {
+          "label": "📦Build"
+        }
+      },
+      "group": "build",
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Flash",
+      "type": "process",
+      "command": "just",
+      "args": ["flash"],
+      "options": {
+        "cwd": "${workspaceRoot}",
+        "statusbar": {
+          "label": "⚡️Flash"
+        }
+      },
+      "group": {
+        "kind": "none",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Clean",
+      "type": "process",
+      "command": "just",
+      "args": ["clean"],
+      "options": {
+        "cwd": "${workspaceRoot}",
+        "statusbar": {
+          "label": "🧹Clean"
+        }
+      },
+      "group": "build"
+    },
+    {
+      "label": "Rebuild",
+      "type": "process",
+      "command": "just",
+      "args": ["rebuild"],
+      "options": {
+        "cwd": "${workspaceRoot}",
+        "statusbar": {
+          "label": "🔄Rebuild"
+        }
+      },
+      "group": {
+        "kind": "none",
+        "isDefault": true
+      }
+    }
+  ]
+}
