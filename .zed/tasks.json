@@ -1,0 +1,27 @@
+[
+  {
+    "label": "📁Setup",
+    "command": "just",
+    "args": ["setup"]
+  },
+  {
+    "label": "📦Build",
+    "command": "just",
+    "args": ["build"]
+  },
+  {
+    "label": "⚡️Flash",
+    "command": "just",
+    "args": ["flash"]
+  },
+  {
+    "label": "🧹Clean",
+    "command": "just",
+    "args": ["Clean"]
+  },
+  {
+    "label": "🔄Rebuild",
+    "command": "just",
+    "args": ["rebuild"]
+  }
+]

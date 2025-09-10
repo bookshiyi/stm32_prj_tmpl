@@ -1,0 +1,25 @@
+{
+  "languages": {
+    "C": {
+      "format_on_save": "on"
+    }
+  },
+  "lsp": {
+    "clangd": {
+      "binary": {
+        "arguments": [
+          "--background-index",
+          "--compile-commands-dir=build/Debug",
+          "--query-driver=/opt/homebrew/bin/arm-none-eabi-gcc",
+          "--completion-style=detailed"
+        ]
+      },
+      "initialization_options": {
+        "clangdFileStatus": true,
+        "usePlaceholders": true,
+        "completeUnimported": false,
+        "semanticHighlighting": true
+      }
+    }
+  }
+}
