@@ -1,0 +1,97 @@
+{
+  "configurations": [
+    {
+      "name": "🐞 PyOCD",
+      "showDevDebugOutput": "both",
+      "cwd": "${workspaceRoot}",
+      "executable": "./build/Debug/${workspaceRootFolderName}.elf",
+      "request": "launch",
+      "type": "cortex-debug",
+      "toolchainPrefix": "arm-none-eabi",
+      "interface": "swd",
+      "runToEntryPoint": "main",
+      "servertype": "pyocd",
+      "preLaunchTask": "Flash",
+      //   "device": "wchlink",
+      //   "targetId": "cortex_m"
+      "osx": {
+        "armToolchainPath": "/opt/homebrew/bin"
+      },
+      "windows": {
+        "armToolchainPath": "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin"
+      },
+      "linux": {
+        "armToolchainPath": "/usr/bin"
+      }
+    },
+    {
+      "name": "🔗 PyOCD",
+      "showDevDebugOutput": "both",
+      "cwd": "${workspaceRoot}",
+      "executable": "./build/Debug/${workspaceRootFolderName}.elf",
+      "request": "attach",
+      "type": "cortex-debug",
+      "toolchainPrefix": "arm-none-eabi",
+      "interface": "swd",
+      "runToEntryPoint": "main",
+      "servertype": "pyocd",
+      //   "device": "wchlink"
+      "osx": {
+        "armToolchainPath": "/opt/homebrew/bin"
+      },
+      "windows": {
+        "armToolchainPath": "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin"
+      },
+      "linux": {
+        "armToolchainPath": "/usr/bin"
+      }
+    },
+    {
+      "name": "🐞 OpenOCD",
+      "showDevDebugOutput": "both",
+      "showDevDebugTimestamps": true,
+      "cwd": "${workspaceRoot}",
+      "executable": "./build/Debug/${workspaceRootFolderName}.elf",
+      "request": "launch",
+      "type": "cortex-debug",
+      "toolchainPrefix": "arm-none-eabi",
+      "servertype": "openocd",
+      "runToEntryPoint": "main",
+      "preLaunchTask": "Flash",
+      // "device": "wchlink",
+      "configFiles": ["openocd.cfg"],
+      "osx": {
+        "armToolchainPath": "/opt/homebrew/bin"
+      },
+      "windows": {
+        "armToolchainPath": "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin"
+      },
+      "linux": {
+        "armToolchainPath": "/usr/bin"
+      }
+    },
+    {
+      "name": "🔗 OpenOCD",
+      "showDevDebugOutput": "both",
+      "showDevDebugTimestamps": true,
+      "cwd": "${workspaceRoot}",
+      "executable": "./build/Debug/${workspaceRootFolderName}.elf",
+      "request": "attach",
+      "type": "cortex-debug",
+      "toolchainPrefix": "arm-none-eabi",
+      "servertype": "openocd",
+      "runToEntryPoint": "main",
+      // "device": "wchlink",
+      "configFiles": ["openocd.cfg"],
+      "osx": {
+        "armToolchainPath": "/opt/homebrew/bin"
+      },
+      "windows": {
+        "armToolchainPath": "C:/Program Files (x86)/Arm GNU Toolchain arm-none-eabi/14.2 rel1/bin"
+      },
+      "linux": {
+        "armToolchainPath": "/usr/bin"
+      }
+    }
+  ]
+}
