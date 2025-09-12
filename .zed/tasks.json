@@ -24,7 +24,7 @@
     "label": "🧹Clean",
     "command": "just",
     "args": [
-      "Clean"
+      "clean"
     ]
   },
   {
