@@ -6,7 +6,7 @@
       "defines": [],
       "cStandard": "c17",
       "cppStandard": "c++14",
-      "intelliSenseMode": "clang-arm",
+      "intelliSenseMode": "gcc-arm",
       "compilerPath": "/opt/homebrew/bin/arm-none-eabi-gcc",
       "configurationProvider": "ms-vscode.cmake-tools",
       "compileCommands": [
