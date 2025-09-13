@@ -55,11 +55,19 @@ rebuild: clean build
 
 # Flash by pyocd
 _flash-pyocd:
-    @pyocd flash -t {{ PYOCD_TARGET }} build/{{ MODE }}/{{ PROJECT }}.elf
+    @pyocd flash \
+        -f 4m \
+        -e auto \
+        --trust-crc \
+        -t {{ PYOCD_TARGET }} \
+        build/{{ MODE }}/{{ PROJECT }}.elf
 
 # Flash by openocd
 _flash-openocd:
-    @openocd -f {{ OPENOCD_INTERFACE }} -f {{ OPENOCD_TARGET }} -d2 -c "program build/{{ MODE }}/{{ PROJECT }}.elf verify reset exit"
+    @openocd \
+        -f {{ OPENOCD_INTERFACE }} \
+        -f {{ OPENOCD_TARGET }} \
+        -c "program build/{{ MODE }}/{{ PROJECT }}.elf verify reset exit"
 
 # ⚡️ Flash
 flash:
