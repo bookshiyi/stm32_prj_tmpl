@@ -59,7 +59,9 @@
       "runToEntryPoint": "main",
       "preLaunchTask": "Flash",
       // "device": "wchlink",
-      "configFiles": ["openocd.cfg"],
+      "configFiles": [
+        "openocd.cfg"
+      ],
       "osx": {
         "armToolchainPath": "/opt/homebrew/bin"
       },
@@ -82,7 +84,9 @@
       "servertype": "openocd",
       "runToEntryPoint": "main",
       // "device": "wchlink",
-      "configFiles": ["openocd.cfg"],
+      "configFiles": [
+        "openocd.cfg"
+      ],
       "osx": {
         "armToolchainPath": "/opt/homebrew/bin"
       },
