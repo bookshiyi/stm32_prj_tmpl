@@ -47,10 +47,7 @@
           "label": "⚡️Flash"
         }
       },
-      "group": {
-        "kind": "none",
-        "isDefault": true
-      }
+      "group": "build"
     },
     {
       "label": "Clean",
@@ -80,10 +77,37 @@
           "label": "🔄Rebuild"
         }
       },
-      "group": {
-        "kind": "none",
-        "isDefault": true
-      }
+      "group": "build",
+    },
+    {
+      "label": "Attach",
+      "type": "process",
+      "command": "just",
+      "args": [
+        "attach"
+      ],
+      "options": {
+        "cwd": "${workspaceRoot}",
+        "statusbar": {
+          "label": "🔗Attach"
+        }
+      },
+      "group": "build"
+    },
+    {
+      "label": "Debug",
+      "type": "process",
+      "command": "just",
+      "args": [
+        "debug"
+      ],
+      "options": {
+        "cwd": "${workspaceRoot}",
+        "statusbar": {
+          "label": "🐞Debug"
+        }
+      },
+      "group": "build"
     }
   ]
 }

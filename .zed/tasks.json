@@ -33,5 +33,19 @@
     "args": [
       "rebuild"
     ]
+  },
+  {
+    "label": "🔗Attach",
+    "command": "just",
+    "args": [
+      "attach"
+    ]
+  },
+  {
+    "label": "🐞Debug",
+    "command": "just",
+    "args": [
+      "debug"
+    ]
   }
 ]

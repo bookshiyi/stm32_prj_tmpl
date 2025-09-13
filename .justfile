@@ -7,6 +7,8 @@ alias b := build
 alias c := clean
 alias r := rebuild
 alias f := flash
+alias a := attach
+alias d := debug
 
 ##############################################
 
@@ -75,3 +77,42 @@ flash:
     @echo ⚡️  Flashing...
     @just _flash-{{ PROGRAMMER }}
     @echo ✅  Flash done
+
+##############################################
+
+# GDB Server by pyocd
+_gdb-server-pyocd:
+    @pyocd \
+        gdbserver \
+        -t {{ PYOCD_TARGET }}
+
+# GDB Server by openocd
+_gdb-server-openocd:
+    @openocd \
+        -f {{ OPENOCD_INTERFACE }} \
+        -f {{ OPENOCD_TARGET }}
+
+# 🔗 Attach
+attach:
+    @echo 🎛️  GDB server starting...
+    @echo ❗️❗️❗️ Please enter [quit/exit] in the GDB prompt to close the session
+    @-kill -9 $(lsof -ti :3333) 2>/dev/null || true # kill gdbserver process
+    @just _gdb-server-{{ PROGRAMMER }} & # background run
+    @sleep 2
+    @echo 🔗 Attaching...
+    @arm-none-eabi-gdb \
+        -q \
+        -ex "target remote localhost:3333" \
+        -ex "monitor reset" \
+        -ex "break main" \
+        build/{{ MODE }}/{{ PROJECT }}.elf
+    @sleep 1
+    @-kill -9 $(lsof -ti :3333) 2>/dev/null || true # kill gdbserver process
+    @echo ✅  Session ended
+
+##############################################
+
+# 🐞Debug
+debug:
+    @just flash
+    @just attach
