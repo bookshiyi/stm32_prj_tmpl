@@ -99,6 +99,7 @@ sequenceDiagram
 
     box rgba(48, 96, 48, 0.2) Debug system
     participant DAP as DAP<br/>cortex-debug
+    participant DebugClient as DebugClient<br/>arm-none-eabi-gdb
     participant DebugServer as DebugServer<br/>OpenOCD | pyOCD
     participant Debugger as Debugger<br/>ST-Link | CMSIS-DAP
     end
@@ -138,7 +139,8 @@ sequenceDiagram
     Note over IDE, MCU: 🔗 Attach
     IDE ->> CLI: 🔗 Attach
     CLI ->> DAP:
-    DAP ->> DebugServer:
+    DAP ->> DebugClient:
+    DebugClient ->> DebugServer:
     DebugServer ->> Debugger:
     Debugger ->> MCU:
 
