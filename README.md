@@ -1,6 +1,6 @@
 # stm32_prj_tmpl
 
-> 一个为 stm32cubemx 生成的项目提供的开发模版
+> 一个为 STM32CubeMX 生成的项目提供的开发模版
 
 ## 特点
 
@@ -147,4 +147,25 @@ sequenceDiagram
     IDE ->> CLI: 🐞 Debug
     Runner ->> Runner: just flash
     CLI ->> CLI: attach
+```
+
+## 备注
+
+1. 如需添加源码到编译系统，请参考`cmake/user/CMakeLists.txt`文件
+2. 如需生成`HEX`和`BIN`文件，请将下列内容放到工程根目录下`CMakeLists.txt`的末尾：
+
+```cmake
+################ HEX Generation ################
+add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_OBJCOPY} -O ihex $<TARGET_FILE:${CMAKE_PROJECT_NAME}> ${CMAKE_PROJECT_NAME}.hex
+    COMMENT "HEX generated: ${CMAKE_PROJECT_NAME}.hex"
+    VERBATIM
+)
+
+################ BIN Generation ################
+add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_OBJCOPY} -O binary $<TARGET_FILE:${CMAKE_PROJECT_NAME}> ${CMAKE_PROJECT_NAME}.bin
+    COMMENT "BIN generated: ${CMAKE_PROJECT_NAME}.bin"
+    VERBATIM
+)
 ```
