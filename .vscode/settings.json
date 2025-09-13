@@ -6,5 +6,5 @@
     "*.json": "json",
     "*.txt": "txt"
   },
-  "debug.toolBarLocation": "floating"
+  "debug.toolBarLocation": "commandCenter"
 }
