@@ -2,50 +2,41 @@
   {
     "label": "🛠️Setup",
     "command": "just",
-    "args": [
-      "setup"
-    ]
+    "args": ["setup"]
   },
   {
     "label": "📦Build",
     "command": "just",
-    "args": [
-      "build"
-    ]
+    "args": ["build"]
   },
   {
     "label": "⚡️Flash",
     "command": "just",
-    "args": [
-      "flash"
-    ]
+    "args": ["flash"]
   },
   {
     "label": "🧹Clean",
     "command": "just",
-    "args": [
-      "clean"
-    ]
+    "args": ["clean"]
   },
   {
     "label": "🔄Rebuild",
     "command": "just",
-    "args": [
-      "rebuild"
-    ]
+    "args": ["rebuild"]
+  },
+  {
+    "label": "🔍Scan",
+    "command": "just",
+    "args": ["scan"]
   },
   {
     "label": "🔗Attach",
     "command": "just",
-    "args": [
-      "attach"
-    ]
+    "args": ["attach"]
   },
   {
     "label": "🐞Debug",
     "command": "just",
-    "args": [
-      "debug"
-    ]
+    "args": ["debug"]
   }
 ]

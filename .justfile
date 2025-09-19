@@ -6,6 +6,7 @@ alias s := setup
 alias b := build
 alias c := clean
 alias r := rebuild
+# alias s := scan
 alias f := flash
 alias a := attach
 alias d := debug
@@ -14,10 +15,11 @@ alias d := debug
 
 PROJECT := "daq_fw" # Change to your project name
 MODE := "Debug" # [Debug] or [Release]
-PROGRAMMER := "pyocd" # [openocd] or [pyocd]
+PROGRAMMER := "probe-rs" # [openocd] or [pyocd] or [probe-rs]
 PYOCD_TARGET := "stm32f407vetx" # >pyocd list --targets
 OPENOCD_INTERFACE := "interface/stlink.cfg" # stlink-dap.cfg,stlink.cfg,cmsis-dap.cfg # >ls /opt/homebrew/share/openocd/scripts/interface/
 OPENOCD_TARGET := "target/stm32f4x.cfg" # >ls /opt/homebrew/share/openocd/scripts/target/
+PROBE_RS_TARGET := "stm32f407vetx" # probe-rs chip list
 
 ##############################################
 
@@ -55,6 +57,29 @@ rebuild: clean build
 
 ##############################################
 
+# 🔍 Scan probes and targets
+scan:
+    @echo 🔍 Scaning...
+
+    @echo 1. [pyOCD] ===========================
+    @pyocd list # scan probes
+    @pyocd reset -t {{ PYOCD_TARGET }} # scan targets
+
+    @echo 2. [OpenOCD] =========================
+    @openocd \
+        -f {{ OPENOCD_INTERFACE }} \
+        -f {{ OPENOCD_TARGET }} \
+        -c "init; exit"
+
+    @echo 3. [probe-rs]  ======================
+    @probe-rs list # scan probes
+    @probe-rs info \
+         --protocol swd # scan targets
+
+    @echo ✅  Scaned done
+
+##############################################
+
 # Flash by pyocd
 _flash-pyocd:
     @pyocd flash \
@@ -70,6 +95,12 @@ _flash-openocd:
         -f {{ OPENOCD_INTERFACE }} \
         -f {{ OPENOCD_TARGET }} \
         -c "program build/{{ MODE }}/{{ PROJECT }}.elf verify reset exit"
+
+# Flash by probe-rs
+_flash-probe-rs:
+    @probe-rs run \
+        --chip {{ PROBE_RS_TARGET }} \
+        build/{{ MODE }}/{{ PROJECT }}.elf
 
 # ⚡️ Flash
 flash:
@@ -91,6 +122,13 @@ _gdb-server-openocd:
     @openocd \
         -f {{ OPENOCD_INTERFACE }} \
         -f {{ OPENOCD_TARGET }}
+
+# GDB Server by probe-rs
+_gdb-server-probe-rs:
+    @probe-rs gdb \
+        --chip {{ PROBE_RS_TARGET }} \
+        --gdb-connection-string localhost:3333 \
+        build/{{ MODE }}/{{ PROJECT }}.elf
 
 # 🔗 Attach
 attach:
