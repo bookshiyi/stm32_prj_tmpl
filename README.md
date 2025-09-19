@@ -38,6 +38,7 @@ pyocd pack install stm32f407
 | 📦 构建  | just build/b      | 调用底层构建工具（如 Make/Ninja/MSBuild）​ 编译源代码并链接 ​ | .o/.obj（对象文件）.a/.lib（静态库）.elf/.hex（目标可执行文件） |
 | 🧹 清理  | just clean/c      | 删除构建产物 ​（对象文件、可执行文件等）                      | 清理 build/目录下所有产物                                       |
 | ⚡️ 烧录 | just flash/f      | 将可执行文件烧录到目标设备                                    | 通过 openocd/pyocd 将.elf/.hex/.bin 烧录到目标设备              |
+| 🔍 扫描  | just scan/        | 扫描连接到电脑的调试器及目标设备                       | 调试器列表、设备信息                                                        |
 | 🔗 链接  | just attach/a GUI | 连接到调试会话 ​（需配合 IDE 和调试器）                       | 无需下载                                                        |
 | 🐞 调试  | just debug/d GUI  | 启动调试会话 ​（需配合 IDE 和调试器）                         | 烧录后启动调试会话                                              |
 
@@ -54,7 +55,7 @@ pyocd pack install stm32f407
 | 构建生成器 | CMake                | 根据 CMakeLists.txt 对项目的构建方法进行编排                           |
 | 构建执行器 | Ninja                | 根据构建生成器生成的构建系统描述文件，执行构建任务                     |
 | 编译器     | GCC                  | 接收执行器的调配，将源文件编译为目标文件，并将目标文件链接成可执行文件 |
-| 调试服务器 | pyocd/openocd        | 连接终端或 DAP 与 Debugger 的桥梁                                      |
+| 调试服务器 | pyocd/openocd/probe-rs        | 连接终端或 DAP 与 Debugger 的桥梁                                      |
 | DAP        | cortex-debug(vscode) | 连接 GUI 与调试服务器的桥梁                                            |
 
 ## 文件列表
@@ -100,7 +101,7 @@ sequenceDiagram
     box rgba(48, 96, 48, 0.2) Debug system
     participant DAP as DAP<br/>cortex-debug
     participant DebugClient as DebugClient<br/>arm-none-eabi-gdb
-    participant DebugServer as DebugServer<br/>OpenOCD | pyOCD
+    participant DebugServer as DebugServer<br/>OpenOCD | pyOCD | probe-rs
     participant Debugger as Debugger<br/>ST-Link | CMSIS-DAP
     end
 
