@@ -100,6 +100,8 @@ _flash-openocd:
 _flash-probe-rs:
     @probe-rs run \
         --chip {{ PROBE_RS_TARGET }} \
+        --always-print-stacktrace \
+        --preverify \
         build/{{ MODE }}/{{ PROJECT }}.elf
 
 # ⚡️ Flash
